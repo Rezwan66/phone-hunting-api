@@ -1,4 +1,4 @@
-const loadPhone = async (searchText = 13, isShowAll) => {
+const loadPhone = async (searchText, isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
@@ -86,7 +86,7 @@ const showPhoneDetails = (phoneDetailsObj) => {
         <p><span class="font-bold">Slug: </span>${phoneDetailsObj?.slug}</p>
         <p><span class="font-bold">Release date: </span>${phoneDetailsObj?.releaseDate}</p>
         <p><span class="font-bold">Brand: </span>${phoneDetailsObj?.brand}</p>
-        <p><span class="font-bold">GPS: </span>${phoneDetailsObj?.others?.GPS}</p>
+        <p><span class="font-bold">GPS: </span>${phoneDetailsObj?.others?.GPS || 'No GPS available'}</p>
     `
     show_details_modal.showModal();
 }
@@ -116,4 +116,4 @@ const handleShowAll = () => {
     handleSearch(true);
 }
 
-loadPhone();
+// loadPhone();
