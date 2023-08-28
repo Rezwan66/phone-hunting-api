@@ -18,7 +18,7 @@ const displayPhones = phones => {
     const showAllContainer = document.getElementById('show-all-container');
     if (phones.length > 12) {
         showAllContainer.classList.remove('hidden');
-    }else{
+    } else {
         showAllContainer.classList.add('hidden');
     }
 
@@ -46,6 +46,9 @@ const displayPhones = phones => {
         phoneContainer.appendChild(phoneCard);
     })
 
+    // hide loading spinner
+    toggleLoadingSpinner(false);
+
     // show search results count
     const countItems = document.getElementById('count-items');
     countItems.innerHTML = `
@@ -55,11 +58,22 @@ const displayPhones = phones => {
 
 // handle search button
 const handleSearch = () => {
+    toggleLoadingSpinner(true);
     // console.log('searched');
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     // console.log(searchText);
     loadPhone(searchText);
+}
+
+// loading spinner
+const toggleLoadingSpinner = (isLoading) => {
+    const loadingContainer = document.getElementById('loading-dots-container');
+    if (isLoading) {
+        loadingContainer.classList.remove('hidden');
+    } else {
+        loadingContainer.classList.add('hidden');
+    }
 }
 
 // loadPhone();
