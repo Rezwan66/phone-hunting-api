@@ -76,8 +76,8 @@ const showPhoneDetails = (phoneDetailsObj) => {
     console.log(phoneDetailsObj);
     const showDetailContainer = document.getElementById('show-detail-container');
     showDetailContainer.innerHTML = `
-        <figure><img src="${phoneDetailsObj.image}" alt="Shoes" /></figure>
-        <h3 class="font-bold text-2xl">${phoneDetailsObj.name}</h3>
+        <figure><img src="${phoneDetailsObj.image}" class="w-1/3 mx-auto" alt="Shoes" /></figure>
+        <h3 class="font-bold text-2xl mt-4">${phoneDetailsObj.name}</h3>
         <p class="py-4">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
         <p><span class="font-bold">Storage: </span>${phoneDetailsObj?.mainFeatures?.storage}</p>
         <p><span class="font-bold">Display Size: </span>${phoneDetailsObj?.mainFeatures?.displaySize}</p>
