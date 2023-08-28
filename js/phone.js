@@ -14,6 +14,9 @@ const displayPhones = phones => {
     phoneContainer.textContent = '';
     // phoneContainer.innerHTML = ``;
 
+    // display only the first 12 phones
+    phones = phones.slice(0,12);
+
     phones.forEach(phone => {
         // console.log(phone);
 
@@ -38,13 +41,13 @@ const displayPhones = phones => {
     // show search results count
     const countItems = document.getElementById('count-items');
     countItems.innerHTML = `
-        <p>${phones.length} results</p>
+        <p>Showing ${phones.length} results</p>
     `;
 }
 
 // handle search button
 const handleSearch = () => {
-    console.log('searched');
+    // console.log('searched');
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     // console.log(searchText);
