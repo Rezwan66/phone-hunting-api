@@ -37,11 +37,12 @@ const displayPhones = (phones, isShowAll) => {
         // 3. set inner html
         phoneCard.innerHTML = `
             <figure><img src="${phone.image}" alt="Shoes" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">${phone.phone_name}</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div class="card-body text-center">
+                <h2 class="text-2xl font-bold">${phone.phone_name}</h2>
+                <p class="max-w-xs mx-auto">There are many variations of passages of available, but the majority have suffered</p>
+                <h2 class="text-2xl font-bold">$999</h2>
                 <div class="card-actions justify-center">
-                    <button class="btn btn-primary capitalize text-white">Show Details</button>
+                    <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary capitalize text-white">Show Details</button>
                 </div>
             </div>
         `
@@ -57,6 +58,12 @@ const displayPhones = (phones, isShowAll) => {
     countItems.innerHTML = `
         <p>Showing ${phones.length} results</p>
     `;
+}
+
+// handle show details modal button
+const handleShowDetails = (id) => {
+    console.log('show details btn clicked',id);
+    // load single phone modal data
 }
 
 // handle search button
