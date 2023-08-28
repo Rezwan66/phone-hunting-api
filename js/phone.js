@@ -1,8 +1,8 @@
-const loadPhone = async (searchText, isShowAll) => {
+const loadPhone = async (searchText = 13, isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
-    console.log(phones);
+    // console.log(phones);
     displayPhones(phones, isShowAll);
 }
 
@@ -22,9 +22,9 @@ const displayPhones = (phones, isShowAll) => {
         showAllContainer.classList.add('hidden');
     }
 
-    console.log('is show all', isShowAll);
+    // console.log('is show all', isShowAll);
     // display only the first 12 phones if not show all
-    if(!isShowAll){
+    if (!isShowAll) {
         phones = phones.slice(0, 12);
     }
 
@@ -61,9 +61,34 @@ const displayPhones = (phones, isShowAll) => {
 }
 
 // handle show details modal button
-const handleShowDetails = (id) => {
-    console.log('show details btn clicked',id);
+const handleShowDetails = async (id) => {
+    // console.log('show details btn clicked',id);
     // load single phone modal data
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    // console.log(data.data);
+    const phoneDetailsObj = data.data;
+    showPhoneDetails(phoneDetailsObj)
+}
+
+const showPhoneDetails = (phoneDetailsObj) => {
+    // show the modal
+    console.log(phoneDetailsObj);
+    const showDetailContainer = document.getElementById('show-detail-container');
+    showDetailContainer.innerHTML = `
+        <figure><img src="${phoneDetailsObj.image}" alt="Shoes" /></figure>
+        <h3 class="font-bold text-2xl">${phoneDetailsObj.name}</h3>
+        <p class="py-4">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <p><span class="font-bold">Storage: </span>${phoneDetailsObj?.mainFeatures?.storage}</p>
+        <p><span class="font-bold">Display Size: </span>${phoneDetailsObj?.mainFeatures?.displaySize}</p>
+        <p><span class="font-bold">Chipset: </span>${phoneDetailsObj?.mainFeatures?.chipSet}</p>
+        <p><span class="font-bold">Memory: </span>${phoneDetailsObj?.mainFeatures?.memory}</p>
+        <p><span class="font-bold">Slug: </span>${phoneDetailsObj?.slug}</p>
+        <p><span class="font-bold">Release date: </span>${phoneDetailsObj?.releaseDate}</p>
+        <p><span class="font-bold">Brand: </span>${phoneDetailsObj?.brand}</p>
+        <p><span class="font-bold">GPS: </span>${phoneDetailsObj?.others?.GPS}</p>
+    `
+    show_details_modal.showModal();
 }
 
 // handle search button
@@ -87,8 +112,8 @@ const toggleLoadingSpinner = (isLoading) => {
 }
 
 // handle show all
-const handleShowAll = () =>{
+const handleShowAll = () => {
     handleSearch(true);
 }
 
-// loadPhone();
+loadPhone();
