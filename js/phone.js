@@ -12,6 +12,7 @@ const displayPhones = phones => {
     const phoneContainer = document.getElementById('phone-container');
     // clear phone container cards before add new cards--- needed when we search new items
     phoneContainer.textContent = '';
+    // phoneContainer.innerHTML = ``;
 
     phones.forEach(phone => {
         // console.log(phone);
@@ -25,14 +26,20 @@ const displayPhones = phones => {
             <div class="card-body">
                 <h2 class="card-title">${phone.phone_name}</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+                <div class="card-actions justify-center">
+                    <button class="btn btn-primary capitalize text-white">Show Details</button>
                 </div>
             </div>
         `
         // 4. append child to container
         phoneContainer.appendChild(phoneCard);
     })
+
+    // show search results count
+    const countItems = document.getElementById('count-items');
+    countItems.innerHTML = `
+        <p>${phones.length} results</p>
+    `;
 }
 
 // handle search button
