@@ -5,7 +5,6 @@ All content and API link credit goes to web.programming-hero.com
 
 ![screenshot-phone-hunter](https://github.com/Rezwan66/phone-hunting-api/assets/63563859/faf1e4b5-fb47-452b-ab6e-790c353086da)
 
-# phone-hunter-api
 
 ----------------
 
